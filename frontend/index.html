@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>小游戏总览 · games</title>
+  <!-- 主题在首帧就生效：先读 localStorage 设好 data-theme / data-skin，避免闪一下默认色 -->
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement
+        var saved = JSON.parse(localStorage.getItem('games.theme') || '{}')
+        var pref = saved.mode === 'light' || saved.mode === 'dark' ? saved.mode : 'auto'
+        var skin = saved.skin || 'azure'
+        var dark = pref === 'dark' || (pref === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.dataset.theme = dark ? 'dark' : 'light'
+        root.dataset.skin = skin
+        root.dataset.mode = pref
+      } catch (e) { /* 隐私模式/禁用存储：用默认样式 */ }
+    })()
+  </script>
+  <link rel="stylesheet" href="./frontend/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-main">
+      <div class="brand">
+        <div class="brand-mark">🎮</div>
+        <div class="brand-text">
+          <h1 id="projectName">小游戏总览</h1>
+          <p id="projectPath" class="brand-sub">games · 子游戏集</p>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="toolbar">
+      <label class="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input id="search" type="search" placeholder="搜索游戏、标签、说明…" autocomplete="off" />
+        <button id="searchClear" class="search-clear" type="button" title="清空">×</button>
+      </label>
+      <select id="sort">
+        <option value="name">按名称</option>
+        <option value="updated">按最近更新</option>
+      </select>
+      <button id="reload" class="btn" type="button" title="重新扫描子游戏目录">刷新扫描</button>
+      <div class="theme" id="theme">
+        <button id="themeBtn" class="btn theme-btn" type="button"
+                aria-haspopup="true" aria-expanded="false" title="主题皮肤">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span id="themeBtnLabel">主题</span>
+          <span class="caret" aria-hidden="true"></span>
+        </button>
+        <div class="theme-menu" id="themeMenu" hidden role="dialog" aria-label="主题皮肤设置">
+          <div class="theme-group">
+            <div class="theme-group-title">外观模式</div>
+            <div class="seg" id="modeSeg">
+              <button type="button" data-mode="auto">跟随系统</button>
+              <button type="button" data-mode="light">浅色</button>
+              <button type="button" data-mode="dark">深色</button>
+            </div>
+          </div>
+          <div class="theme-group">
+            <div class="theme-group-title">主题色</div>
+            <div class="swatches" id="skinList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="chips" id="categories" aria-label="分类筛选"></nav>
+  </header>
+
+  <main>
+    <div class="result-bar">
+      <span id="resultCount">—</span>
+      <span id="generatedAt" class="muted"></span>
+    </div>
+    <section id="grid" class="grid"></section>
+    <p id="empty" class="empty" hidden>没有匹配的子游戏，换个关键词试试。</p>
+  </main>
+
+  <div id="drawerMask" class="drawer-mask" hidden></div>
+  <aside id="drawer" class="drawer" hidden aria-label="子游戏详情">
+    <header class="drawer-head">
+      <div>
+        <div class="drawer-dir" id="drawerDir"></div>
+        <h2 id="drawerTitle"></h2>
+      </div>
+      <button id="drawerClose" class="drawer-close" type="button" title="关闭（Esc）" aria-label="关闭详情">×</button>
+    </header>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <script src="./frontend/app.js"></script>
+</body>
+</html>

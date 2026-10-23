@@ -1,0 +1,13 @@
+{
+  "name": "games",
+  "version": "0.1.0",
+  "private": true,
+  "description": "小游戏仓库 —— 多个独立子游戏，共享「游戏总览」前端，供 DSH 插件 dsh-tokensave 工作台的项目中心 / 项目预览直接打开",
+  "previewUrl": "http://127.0.0.1:8766/",
+  "previewUrlNote": "dsh-tokensave 读取本字段判定「● 已启动」并在工作台的项目预览面板里 iframe 打开；端口须与 frontend/server.py 的监听端口一致（默认 8766，改端口时两处一起改）",
+  "scripts": {
+    "dev": "python3 frontend/server.py",
+    "start": "python3 frontend/server.py",
+    "dump": "python3 frontend/server.py --dump"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "note": "人工维护的子游戏元数据（前端总览页面的卡片信息来源）。目录/文件/时间戳由 frontend/server.py 实时扫描，两者合并后喂给页面。新增子游戏时在此补一条即可。",
+  "projects": [
+    {
+      "dir": "snake",
+      "title": "贪吃蛇 · Snake",
+      "summary": "经典贪吃蛇小游戏：方向键/WASD 控制蛇头，吃食物增长，撞墙或咬到自身即结束。纯前端 HTML5，打开即玩。",
+      "category": "小游戏",
+      "tags": ["休闲", "反应", "HTML5", "单文件"],
+      "entry": "index.html",
+      "inputs": [],
+      "outputs": [],
+      "command": "直接在浏览器打开 subprojects/snake/index.html，或点卡片「进入游戏」",
+      "entryLabel": "进入游戏",
+      "notes": "纯前端 HTML5，无后端逻辑。"
+    }
+  ]
+}

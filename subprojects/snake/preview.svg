@@ -1,0 +1,47 @@
+<svg width="400" height="225" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b16" />
+      <stop offset="100%" stop-color="#17244e" />
+    </linearGradient>
+    <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3de8c8" />
+      <stop offset="100%" stop-color="#2dd4bf" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="225" fill="url(#bgGrad)" rx="0" />
+  <!-- 网格 -->
+  <g stroke="#16243e" stroke-width="1">
+    <line x1="0" y1="0" x2="400" y2="0" />
+    <line x1="0" y1="225" x2="400" y2="225" />
+    <line x1="0" y1="0" x2="0" y2="225" />
+    <line x1="400" y1="0" x2="400" y2="225" />
+    <g stroke-dasharray="4,4" opacity="0.35">
+      <line x1="0" y1="45" x2="400" y2="45" />
+      <line x1="0" y1="90" x2="400" y2="90" />
+      <line x1="0" y1="135" x2="400" y2="135" />
+      <line x1="0" y1="180" x2="400" y2="180" />
+      <line x1="80" y1="0" x2="80" y2="225" />
+      <line x1="160" y1="0" x2="160" y2="225" />
+      <line x1="240" y1="0" x2="240" y2="225" />
+      <line x1="320" y1="0" x2="320" y2="225" />
+    </g>
+  </g>
+  <!-- 蛇身 -->
+  <rect x="102" y="102" width="14" height="14" rx="4" fill="url(#snakeGrad)" />
+  <rect x="82" y="102" width="14" height="14" rx="4" fill="#2dd4bf" opacity="0.85" />
+  <rect x="62" y="102" width="14" height="14" rx="4" fill="#2dd4bf" opacity="0.7" />
+  <!-- 蛇头眼睛 -->
+  <circle cx="111" cy="108" r="1.5" fill="#070b16" />
+  <circle cx="113" cy="114" r="1.5" fill="#070b16" />
+  <!-- 食物 -->
+  <circle cx="267" cy="147" r="7" fill="#ff6b85" />
+  <circle cx="267" cy="147" r="3" fill="#fff" opacity="0.6" />
+  <!-- HUD -->
+  <text x="22" y="34" font-family="ui-sans-serif, -apple-system, PingFang SC, sans-serif" font-size="16" font-weight="700" fill="#e8eefc" letter-spacing="-0.5">贪吃蛇 · Snake</text>
+  <text x="22" y="56" font-family="ui-sans-serif, -apple-system, PingFang SC, sans-serif" font-size="11" fill="#94a3b8">分数  42   │   最高  88</text>
+  <text x="335" y="34" font-family="ui-sans-serif, -apple-system, PingFang SC, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">↑↓←→ / WASD</text>
+  <!-- 分类标签 -->
+  <rect x="302" y="178" width="76" height="24" rx="10" fill="#22d3ee" opacity="0.12" stroke="#22d3ee" stroke-width="1" />
+  <text x="340" y="195" font-family="ui-sans-serif, -apple-system, PingFang SC, sans-serif" font-size="10" font-weight="700" fill="#22d3ee" text-anchor="middle">HTML5 · 单文件</text>
+</svg>
