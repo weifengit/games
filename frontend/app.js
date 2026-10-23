@@ -128,7 +128,8 @@
         if (!btn) return
         themeState.mode = btn.dataset.mode
         applyTheme()
-        if (btn.dataset.mode !== 'auto') setThemeMenu(false)
+        event.stopPropagation()
+        // 面板保持打开，方便连续切换多个主题设置
       })
     }
     if (skinList) {
@@ -137,6 +138,7 @@
         if (!btn) return
         themeState.skin = btn.dataset.skin
         applyTheme()
+        event.stopPropagation()
       })
     }
     if (themeBtn) {
@@ -150,6 +152,10 @@
       if (event.key === 'Escape') setThemeMenu(false)
     })
   }
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('#theme')) setThemeMenu(false)
+  })
 
   // ————————————————————————
   // 拉取与合并数据
